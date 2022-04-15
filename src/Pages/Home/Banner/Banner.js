@@ -1,6 +1,5 @@
-import { calculateNewValue } from "@testing-library/user-event/dist/utils";
 import React from "react";
-import { FormControl, InputGroup } from "react-bootstrap";
+
 import banner from "../../../Assets/images/banner/bannerbackground.png";
 
 const Banner = () => {
@@ -16,7 +15,9 @@ const Banner = () => {
       }}
     >
       <div className="container text-center">
-        <h1 className="font-medium text-5xl py-6">Best food waiting for your belly</h1>
+        <h1 className="font-medium text-5xl py-6">
+          Best food waiting for your belly
+        </h1>
         <div className="w-[500px] flex justify-center items-center  mx-auto relative">
           <input
             // style={{ position: "relative" }}

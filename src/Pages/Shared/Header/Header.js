@@ -1,5 +1,4 @@
 import React from "react";
-import { Container, Nav, Navbar, NavDropdown } from "react-bootstrap";
 import logo from "../../../Assets/images/logo/logo2.png";
 import { FiShoppingCart } from "react-icons/fi";
 import { Link } from "react-router-dom";
