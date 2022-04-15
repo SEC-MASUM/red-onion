@@ -10,6 +10,8 @@ const Header = () => {
       expand="lg"
       sticky="top"
       className="text-dark py-3"
+      bg="white"
+
     >
       <Container>
         <Navbar.Brand href="#home">
