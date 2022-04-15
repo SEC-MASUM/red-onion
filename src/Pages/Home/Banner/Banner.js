@@ -6,7 +6,7 @@ import banner from "../../../Assets/images/banner/bannerbackground.png";
 const Banner = () => {
   return (
     <div
-      className="d-flex justify-content-center align-items-center"
+      className="flex justify-center items-center"
       style={{
         backgroundImage: `url(${banner})`,
         backgroundSize: "cover",
@@ -15,24 +15,21 @@ const Banner = () => {
         height: "500px",
       }}
     >
-      <div className="text-center">
-        <h1>Best ood waiting for your belly</h1>
-        <div class="input-group mb-3">
+      <div className="container text-center">
+        <h1 className="font-medium text-5xl py-6">Best food waiting for your belly</h1>
+        <div className="w-[500px] flex justify-center items-center  mx-auto relative">
           <input
-            style={{ position: "relative" }}
+            // style={{ position: "relative" }}
             type="text"
-            class="form-control rounded-pill w-100"
-            placeholder="Recipient's username"
-            aria-label="Recipient's username"
-            aria-describedby="button-addon2"
+            className="w-full rounded-full border-0 focus:ring-rose-500 focus:ring-4 focus:ring-opacity-50 px-6 py-4"
+            placeholder="Search food items"
           />
           <button
-            style={{ position: "absolute", right: "0", zIndex: "20" }}
-            class="bg-red text-white btn btn-outline-danger rounded-pill"
+            // style={{ position: "absolute", right: "0", zIndex: "20" }}
+            className="bg-rose-600 text-white px-10 py-4 rounded-full absolute right-0 focus:ring-rose-500 focus:ring-4 focus:ring-opacity-50"
             type="button"
-            id="button-addon2"
           >
-            Button
+            Search
           </button>
         </div>
       </div>
