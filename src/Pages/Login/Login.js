@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import logo from "../../Assets/images/logo/logo3.png";
 import { BsFacebook, BsGithub } from "react-icons/bs";
-import { FcGoogle, } from "react-icons/fc";
+import { FcGoogle } from "react-icons/fc";
 
 const Login = () => {
   return (
@@ -49,17 +49,14 @@ const Login = () => {
             <div className="w-full block h-1 bg-rose-600"></div>
           </p>
         </div>
-        <div className="flex justify-center items-center p-5 space-x-3">
-          <button
-            id="facebook-login"
-            className="text-2xl border-2 border-rose-300 rounded-full p-1 text-blue-600"
-          >
+        <div className="flex justify-center items-center p-5 space-x-4">
+          <button id="facebook-login" className="text-2xl  text-blue-600">
             <BsFacebook></BsFacebook>
           </button>
-          <button class="text-2xl border-2 border-rose-300  rounded-full p-1">
+          <button className="text-2xl">
             <FcGoogle></FcGoogle>
           </button>
-          <button class="text-2xl border-2 border-rose-300 rounded-full p-1">
+          <button className="text-2xl">
             <BsGithub></BsGithub>
           </button>
         </div>

@@ -15,7 +15,7 @@ const SignUp = () => {
           <h2 className="text-3xl font-bold text-rose-600 mb-5 capitalize">
             Sign Up
           </h2>
-          
+
           <input
             id="name"
             className="focus:ring-gray-300  focus:ring-2 focus:bg-white w-4/5  bg-gray-100 border-0 shadow rounded-lg px-4 py-3 mb-5"
@@ -64,17 +64,14 @@ const SignUp = () => {
             <div className="w-full block h-1 bg-rose-600"></div>
           </p>
         </div>
-        <div className="flex justify-center items-center p-5 space-x-3">
-          <button
-            id="facebook-login"
-            className="text-2xl border-2 border-rose-300 rounded-full p-1 text-blue-600"
-          >
+        <div className="flex justify-center items-center p-5 space-x-4">
+          <button id="facebook-login" className="text-2xl  text-blue-600">
             <BsFacebook></BsFacebook>
           </button>
-          <button className="text-2xl border-2 border-rose-300  rounded-full p-1">
+          <button className="text-2xl">
             <FcGoogle></FcGoogle>
           </button>
-          <button className="text-2xl border-2 border-rose-300 rounded-full p-1">
+          <button className="text-2xl">
             <BsGithub></BsGithub>
           </button>
         </div>
