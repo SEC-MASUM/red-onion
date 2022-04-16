@@ -61,6 +61,14 @@ const Lunch = () => {
           <Item key={item.id} item={item}></Item>
         ))}
       </div>
+      <div className="text-center mb-8">
+        <NavLink
+          to="/checkout"
+          className="bg-rose-600 text-white px-4 py-3 rounded-lg"
+        >
+          Checkout Your Food
+        </NavLink>
+      </div>
     </div>
   );
 };
