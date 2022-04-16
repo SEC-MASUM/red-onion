@@ -12,7 +12,7 @@ const breakfastData = [
   {
     id: 1,
     title: "Healthy Meal Plan",
-    desc: "How we dream about our future",
+    desc: "How we dream about our future How we dream about our future  How we dream about our future  How we dream about our future ",
     img: breakfast1,
     price: 23.99,
   },
@@ -61,14 +61,7 @@ const Breakfast = () => {
           <Item key={item.id} item={item}></Item>
         ))}
       </div>
-      <div className="text-center mb-8">
-        <NavLink
-          to="/checkout"
-          className="bg-rose-600 text-white px-4 py-3 rounded-lg"
-        >
-          Checkout Your Food
-        </NavLink>
-      </div>
+      
     </div>
   );
 };
