@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
 import logo from "../../Assets/images/logo/logo3.png";
 import { BsFacebook, BsGithub } from "react-icons/bs";
 import { FcGoogle } from "react-icons/fc";
@@ -8,11 +8,14 @@ import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
 
 const SignUp = () => {
   const navigate = useNavigate();
+  const location = useLocation();
 
   const nameRef = useRef("");
   const emailRef = useRef("");
   const passwordRef = useRef("");
   const confirmPasswordRef = useRef("");
+
+  let from = location.state?.from?.pathname || "/";
 
   const [createUserWithEmailAndPassword, user, loading, error] =
     useCreateUserWithEmailAndPassword(auth);
@@ -28,7 +31,7 @@ const SignUp = () => {
   };
 
   if (user) {
-    navigate("/");
+    navigate(from, { replace: true });
   }
 
   return (

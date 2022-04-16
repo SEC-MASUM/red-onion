@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import logo from "../../Assets/images/logo/logo3.png";
 import { BsFacebook, BsGithub } from "react-icons/bs";
 import { FcGoogle } from "react-icons/fc";
@@ -8,8 +8,12 @@ import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
 
 const Login = () => {
   const navigate = useNavigate();
+  const location = useLocation();
+
   const [signInWithEmailAndPassword, user, loading, error] =
     useSignInWithEmailAndPassword(auth);
+
+  let from = location.state?.from?.pathname || "/";
 
   const handleLogin = (event) => {
     event.preventDefault();
@@ -20,7 +24,7 @@ const Login = () => {
   };
 
   if (user) {
-    navigate("/");
+    navigate(from, { replace: true });
   }
   if (error) {
     console.error(error);
@@ -72,11 +76,11 @@ const Login = () => {
           </p>
         </div>
         <div className="flex justify-center mt-3">
-          <p className="flex w-3/5 text-center items-center ">
+          <div className="flex w-3/5 text-center items-center ">
             <div className="w-full block h-1 bg-rose-600"></div>
             <div className="block px-4">Or</div>
             <div className="w-full block h-1 bg-rose-600"></div>
-          </p>
+          </div>
         </div>
         <div className="flex justify-center items-center p-5 space-x-4">
           <button id="facebook-login" className="text-2xl  text-blue-600">
