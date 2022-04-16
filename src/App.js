@@ -1,5 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
+import Checkout from "./Pages/Checkout/Checkout";
 import Home from "./Pages/Home/Home/Home";
 import Breakfast from "./Pages/Home/Menu/Breakfast/Breakfast";
 import Dinner from "./Pages/Home/Menu/Dinner/Dinner";
@@ -18,6 +19,7 @@ function App() {
           <Route path="breakfast" element={<Breakfast />} />
           <Route path="lunch" element={<Lunch />} />
           <Route path="dinner" element={<Dinner />} />
+          <Route path="checkout" element={<Checkout />} />
         </Route>
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
