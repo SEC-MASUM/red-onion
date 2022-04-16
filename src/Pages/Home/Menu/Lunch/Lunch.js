@@ -1,4 +1,5 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 import lunch1 from "../../../../Assets/images/lunch/lunch1.png";
 import lunch2 from "../../../../Assets/images/lunch/lunch2.png";
 import lunch3 from "../../../../Assets/images/lunch/lunch3.png";
@@ -54,10 +55,20 @@ const lunchData = [
 
 const Lunch = () => {
     return (
-      <div className="container grid grid-cols-3 gap-x-4 gap-y-8 mx-auto my-12">
-        {lunchData.map((item) => (
-          <Item key={item.id} item={item}></Item>
-        ))}
+      <div className="container  mx-auto">
+        <div className=" grid grid-cols-3 gap-x-4 gap-y-8  my-12">
+          {lunchData.map((item) => (
+            <Item key={item.id} item={item}></Item>
+          ))}
+        </div>
+        <div className="text-center mb-8">
+          <NavLink
+            to="/checkout"
+            className="bg-rose-600 text-white px-4 py-3 rounded-lg"
+          >
+            Checkout Your Food
+          </NavLink>
+        </div>
       </div>
     );
 };
