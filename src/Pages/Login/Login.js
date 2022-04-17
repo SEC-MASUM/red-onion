@@ -74,6 +74,12 @@ const Login = () => {
               <span className="text-rose-600">Create An Account</span>
             </Link>
           </p>
+          <p>
+            Forget Password?{" "}
+            <Link to="/signup">
+              <span className="text-rose-600">Reset Password</span>
+            </Link>
+          </p>
         </div>
         <div className="flex justify-center mt-3">
           <div className="flex w-3/5 text-center items-center ">
