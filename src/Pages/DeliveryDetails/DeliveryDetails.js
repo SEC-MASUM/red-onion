@@ -1,8 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import logo from "../../Assets/images/logo/logo3.png";
-import { BsFacebook, BsGithub } from "react-icons/bs";
-import { FcGoogle } from "react-icons/fc";
 
 const DeliveryDetails = () => {
   return (
@@ -19,7 +15,7 @@ const DeliveryDetails = () => {
             className="focus:ring-gray-300  text-gray-800 font-medium focus:ring-2 focus:bg-white w-full bg-gray-100 border-0 shadow rounded-lg px-4 py-2 mb-5"
             type="text"
             placeholder="Delivery Method"
-            value="Delivery to door"
+            // value="Delivery to door"
           />
           <input
             id="street"
