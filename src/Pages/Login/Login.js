@@ -1,33 +1,64 @@
-import React from "react";
+import React, { useRef } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import logo from "../../Assets/images/logo/logo3.png";
 import { BsFacebook, BsGithub } from "react-icons/bs";
 import { FcGoogle } from "react-icons/fc";
 import auth from "../../Firebase/firebase.init";
-import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
+import {
+  useSendPasswordResetEmail,
+  useSignInWithEmailAndPassword,
+} from "react-firebase-hooks/auth";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import Loading from "../Shared/Loading/Loading";
 
 const Login = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const [signInWithEmailAndPassword, user, error] =
+  const emailRef = useRef("");
+  const passwordRef = useRef("");
+
+  const [signInWithEmailAndPassword, user, loading, signInError] =
     useSignInWithEmailAndPassword(auth);
+
+  const [sendPasswordResetEmail, sending, passwordResetError] =
+    useSendPasswordResetEmail(auth);
 
   let from = location.state?.from?.pathname || "/";
 
-  const handleLogin = (event) => {
-    event.preventDefault();
-    const email = event.target.email.value;
-    const password = event.target.password.value;
+  const handleLogin = (e) => {
+    e.preventDefault();
+    const email = e.target.email.value;
+    const password = e.target.password.value;
     console.log(email, password);
     signInWithEmailAndPassword(email, password);
+  };
+
+  const resetPassword = async () => {
+    const email = emailRef.current.value;
+    if (email) {
+      await sendPasswordResetEmail(email);
+      toast("Sent email");
+    } else {
+      toast("Please enter your email address");
+    }
   };
 
   if (user) {
     navigate(from, { replace: true });
   }
-  if (error) {
-    console.error(error);
+  if (loading || sending) {
+    return <Loading></Loading>;
+  }
+  let errorElement;
+  if (signInError || passwordResetError) {
+    console.error(signInError || passwordResetError);
+    errorElement = (
+      <p className="text-red-600 font-medium pb-4">
+        {signInError?.message || passwordResetError?.message}
+      </p>
+    );
   }
 
   return (
@@ -43,6 +74,7 @@ const Login = () => {
           <form onSubmit={handleLogin}>
             <input
               id="email"
+              ref={emailRef}
               className="focus:ring-gray-300  focus:ring-2 focus:bg-white w-4/5  bg-gray-100 border-0 shadow rounded-lg px-4 py-3 mb-5"
               type="email"
               placeholder="Email"
@@ -50,6 +82,7 @@ const Login = () => {
             />
             <input
               id="password"
+              ref={passwordRef}
               className="focus:ring-gray-300  focus:ring-2 focus:bg-white w-4/5  bg-gray-100 border-0 shadow rounded-lg px-4 py-3 mb-5"
               type="password"
               placeholder="Password"
@@ -63,11 +96,7 @@ const Login = () => {
               Log in
             </button>
           </form>
-          {error ? (
-            <p className="text-red-600 font-medium pb-4">{error.message}</p>
-          ) : (
-            ""
-          )}
+          {errorElement}
           <p>
             New to Red Onion?{" "}
             <Link to="/signup">
@@ -76,9 +105,9 @@ const Login = () => {
           </p>
           <p>
             Forget Password?{" "}
-            <Link to="/signup">
-              <span className="text-rose-600">Reset Password</span>
-            </Link>
+            <button onClick={resetPassword} className="text-rose-600">
+              Reset Password
+            </button>
           </p>
         </div>
         <div className="flex justify-center mt-3">
@@ -100,6 +129,7 @@ const Login = () => {
           </button>
         </div>
       </div>
+      <ToastContainer />
     </div>
   );
 };
